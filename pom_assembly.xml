@@ -1,0 +1,79 @@
+<assembly>
+
+	<id>bin</id>
+
+	<includeBaseDirectory>false</includeBaseDirectory>
+		
+	<formats>
+		<format>tar.gz</format>
+		<format>zip</format>
+		<format>dir</format>
+	</formats>
+
+	<fileSets>
+
+		<fileSet>
+			<directory>${project.basedir}/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+			<includes>
+				<include>*.bat</include>
+				<include>*.sh</include>
+				<include>*.exe</include>
+			</includes>
+			<fileMode>0755</fileMode>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.basedir}/cfg</directory>
+			<outputDirectory>cfg</outputDirectory>
+			<includes>
+				<include>*.properties</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.basedir}/log</directory>
+			<outputDirectory>log</outputDirectory>
+			<excludes>
+      			<exclude>*/**</exclude>
+    		</excludes>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.basedir}/lib</directory>
+			<outputDirectory>lib-ext</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+				<include>*.dll</include>
+				<include>*.so</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<outputDirectory>lib</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.basedir}/doc</directory>
+			<outputDirectory>doc</outputDirectory>
+			<includes>
+				<include>*.pdf</include>
+			</includes>
+		</fileSet>
+
+	</fileSets>
+
+	<dependencySets>
+
+		<dependencySet>
+			<useProjectArtifact>false</useProjectArtifact>
+			<outputDirectory>lib-ext</outputDirectory>
+		</dependencySet>
+
+	</dependencySets>
+
+</assembly>

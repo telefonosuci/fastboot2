@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="applicationContextProvder" class="it.bamboolab.fastboot.context." />
+
+    <!-- APPPLICATION PROPERTIES BEAN -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <!-- <property name="locations" value="file:cfg/fastrack.properties" /> -->
+        <property name="locations" value="classpath:fastboot.properties" />
+    </bean>
+
+    <bean id="applicationProperties" class="it.bamboolab.fastboot.context.ApplicationProperties">
+        <property name="username" value="${fastboot.ftp.user}" />
+        <property name="password" value="${fastboot.ftp.password}" />
+        <property name="rmiPort" value="${fastboot.application.rmi.port}" />
+    </bean>
+
+    <!-- TASK EXECUTOR THREAD POOL -->
+    <bean id="taskExecutor" scope="singleton" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="64" />
+        <property name="maxPoolSize" value="${fastrack.application.execution.threadpoolsize}" />
+        <property name="queueCapacity" value="64" />
+        <property name="WaitForTasksToCompleteOnShutdown" value="true" />
+        <property name="threadNamePrefix" value="ft_"/>
+    </bean>
+
+
+</beans>
