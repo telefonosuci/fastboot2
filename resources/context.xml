@@ -25,7 +25,10 @@
         <property name="queueCapacity" value="64" />
         <property name="WaitForTasksToCompleteOnShutdown" value="true" />
 
+        <property name="threadNamePrefix" value="executor-"/>
+
     </bean>
+
 
 
 </beans>

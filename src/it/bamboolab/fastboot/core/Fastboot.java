@@ -1,8 +1,12 @@
 package it.bamboolab.fastboot.core;
 
+import it.bamboolab.fastboot.context.ApplicationContextProvider;
 import it.bamboolab.fastboot.context.ApplicationState;
 
+import it.bamboolab.fastboot.threads.DirectoryMonitor;
 import org.apache.log4j.Logger;
+
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 public class Fastboot {
 
@@ -10,19 +14,14 @@ public class Fastboot {
 	
 	
 	public static void main(String[] args) {
-			
-		while(ApplicationState.on){
-			
-			logger.debug("Look, I'm running!");
-			
-			try {
-		
-				Thread.sleep(1000);
-			
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+
+		ThreadPoolTaskExecutor executor = ApplicationContextProvider.context.getBean("taskExecutor", ThreadPoolTaskExecutor.class);
+
+		DirectoryMonitor monitor = new DirectoryMonitor();
+
+		executor.execute(monitor);
+
+
 	}
 	
 	public static void stop(){
@@ -30,4 +29,6 @@ public class Fastboot {
 		ApplicationState.on=false;
 		
 	}
+
+
 }
