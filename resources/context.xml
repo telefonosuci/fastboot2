@@ -19,11 +19,12 @@
 
     <!-- TASK EXECUTOR THREAD POOL -->
     <bean id="taskExecutor" scope="singleton" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+
         <property name="corePoolSize" value="64" />
-        <property name="maxPoolSize" value="${fastrack.application.execution.threadpoolsize}" />
+        <property name="maxPoolSize" value="${fastboot.application.threadpoolsize}" />
         <property name="queueCapacity" value="64" />
         <property name="WaitForTasksToCompleteOnShutdown" value="true" />
-        <property name="threadNamePrefix" value="ft_"/>
+
     </bean>
 
 

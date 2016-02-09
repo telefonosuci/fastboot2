@@ -63,7 +63,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
-					<finalName>${project.version}-fastboot</finalName>
+					<finalName>fastboot_${project.version}</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
 					<descriptor>pom_assembly.xml</descriptor>
 				</configuration>
