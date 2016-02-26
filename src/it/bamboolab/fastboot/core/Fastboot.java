@@ -3,6 +3,7 @@ package it.bamboolab.fastboot.core;
 import it.bamboolab.fastboot.context.ApplicationContextProvider;
 import it.bamboolab.fastboot.context.ApplicationState;
 
+import it.bamboolab.fastboot.rmi.JMXServer;
 import it.bamboolab.fastboot.threads.DirectoryMonitor;
 import org.apache.log4j.Logger;
 
@@ -22,7 +23,12 @@ public class Fastboot {
 		executor.execute(monitor);
 
 
+		logger.warn("Starting JMX server");
+		JMXServer jmxServer = new JMXServer();
+		jmxServer.start();
+
 	}
+
 	
 	public static void stop(){
 		

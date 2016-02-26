@@ -30,7 +30,7 @@ public class JMXManager {
 
 	private JMXManager() {
 
-		super();
+		//super();
 		beanServer = ManagementFactory.getPlatformMBeanServer();
 	}
 
